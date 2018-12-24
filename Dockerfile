@@ -1,16 +1,14 @@
-FROM docker.oa.com:8080/public/centos-7.2:latest
+FROM docker.oa.com:8080/library/tlinux2.2-gaia-with-onion
 
-RUN set -x \
-    && mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup \
-    && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo \
-    && yum clean all \
-    && yum makecache \
-    && yum -y update \
-    && yum -y install gdb python-debug \
-    && yum clean all \
+RUN yum -y update \
+    && yum -y install php \
     && rm -rf /tmp/* /var/tmp/* /data/tmp/*
 
-COPY . /data/test
+COPY index.php /data/demo/
 
-CMD ["python", "/data/test/test.py"]
+RUN ls /data/demo/ \
+    && php --version
 
+WORKDIR /data/demo
+
+CMD ["php", "/data/demo/index.php"]
