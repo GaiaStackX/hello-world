@@ -5,12 +5,20 @@ RUN set -x \
     && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo \
     && yum clean all \
     && yum makecache \
-    && yum -y update \
-    && yum -y install gdb python-debug \
+    && yum -y install java-1.7.0-openjdk maven \
     && yum clean all \
     && rm -rf /tmp/* /var/tmp/* /data/tmp/*
 
-COPY . /data/test
+COPY . /data/hello-world
 
-CMD ["python", "/data/test/test.py"]
+RUN cd /data/hello-world \
+    && mkdir -p ~/.m2 \
+    && mv settings.xml ~/.m2 \
+    && java -version \
+    && mvn -version \
+    && mvn package \
+    && ls target/*.jar \
+    && java -version \
+    && mvn -version
 
+CMD ["java", "-jar", "/data/hello-world/target/helloworld-1.0-SNAPSHOT.jar"]
