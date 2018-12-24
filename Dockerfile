@@ -1,16 +1,15 @@
-FROM docker.oa.com:8080/public/centos-7.2:latest
+FROM docker.oa.com:8080/library/tlinux2.2-gaia-with-onion
 
-RUN set -x \
-    && mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup \
-    && curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.cloud.tencent.com/repo/centos7_base.repo \
-    && yum clean all \
-    && yum makecache \
-    && yum -y update \
-    && yum -y install gdb python-debug \
-    && yum clean all \
-    && rm -rf /tmp/* /var/tmp/* /data/tmp/*
+RUN yum -y update \
+    && yum -y install java-1.8.0-openjdk* maven \
+    && java -version
 
-COPY . /data/test
+COPY . /data/hello-world
 
-CMD ["python", "/data/test/test.py"]
+RUN cd /data/hello-world \
+    && mkdir -p ~/.m2 \
+    && mv settings.xml ~/.m2 \
+    && mvn package \
+    && ls target/*.jar
 
+CMD ["java", "-jar", "/data/hello-world/target/helloworld-1.0-SNAPSHOT.jar"]
