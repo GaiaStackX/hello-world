@@ -6,11 +6,14 @@ RUN set -x \
     && yum clean all \
     && yum makecache \
     && yum -y update \
-    && yum -y install gdb python-debug \
+    && yum -y install gcc-c++ gcc cmake \
     && yum clean all \
     && rm -rf /tmp/* /var/tmp/* /data/tmp/*
 
-COPY . /data/test
+ADD main.cpp /data/test/
 
-CMD ["python", "/data/test/test.py"]
+RUN cd /data/test \
+    && g++ -o test main.cpp 
+    
+CMD ["/data/test/test"]
 
