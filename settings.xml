@@ -180,12 +180,12 @@ under the License.
     </mirror>
      </mirror>-->
 
-     <mirror>
-        <id>tencentMirror</id>
-        <mirrorOf>central</mirrorOf>
-        <name>tencent mirror</name>
-       <url>http://maven.oa.com/nexus/content/repositories/central</url>
-     </mirror>
+    <mirror>
+      <id>nexus-tencentyun</id>
+      <mirrorOf>*</mirrorOf>
+      <name>Nexus tencentyun</name>
+      <url>http://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+    </mirror> 
   </mirrors>
 
   <!-- profiles
@@ -211,75 +211,6 @@ under the License.
    |-->
 
   <profiles>
-   <profile>
-     <id>nexus</id>
-     <!-- jar仓库-->
-     <repositories>
-        <!-- tencent android -->
-        <repository>
-            <id>tencent-android</id>
-            <url>http://maven.oa.com/nexus/content/repositories/android/</url>
-        </repository>
-
-        <!-- tencent clojars -->
-        <repository>
-            <id>tencent-clojars</id>
-            <url>http://maven.oa.com/nexus/content/repositories/clojars/</url>
-        </repository>
-
-        <!-- tencent thirdparty-snapshots -->
-        <repository>
-            <id>tencent-snapshot</id>
-            <url>http://maven.oa.com/nexus/content/repositories/thirdparty-snapshots</url>
-        </repository>
-
-        <!-- tencent public -->
-        <repository>
-          <id>central</id>
-          <url>http://maven.oa.com/nexus/content/groups/public</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-
-        <!-- tencent release -->
-        <repository>
-          <id>rdm-releases-repo</id>
-          <url>http://maven.oa.com/nexus/content/repositories/releases</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-
-        <!-- tencent data public -->
-        <repository>
-           <id>data-repo</id>
-           <name>data nexus</name>
-           <!-- <url>http://10.130.72.155:8080/nexus/content/groups/public</url> -->
-           <url>http://maven.data.oa.com/nexus/content/groups/public</url>
-           <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-       </repository>
-     </repositories>
-
-     <!--插件仓库-->
-     <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <url>http://maven.oa.com/nexus/content/groups/public</url>
-        </pluginRepository>
-     </pluginRepositories>
-   </profile>
 
     <!-- profile
               | Specifies a set of introductions to the build process, to be activated using one or more of the
@@ -355,8 +286,8 @@ under the License.
     <activeProfile>anotherAlwaysActiveProfile</activeProfile>
   </activeProfiles>
   -->
-  <activeProfiles>
+  <!--<activeProfiles>
     <activeProfile>nexus</activeProfile>
-  </activeProfiles>
+  </activeProfiles> -->
 </settings>
 
