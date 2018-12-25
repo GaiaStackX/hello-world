@@ -184,7 +184,7 @@ under the License.
       <id>nexus-tencentyun</id>
       <mirrorOf>*</mirrorOf>
       <name>Nexus tencentyun</name>
-      <url>http://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+      <url>http://mirrors.cloudtencent.com/nexus/repository/maven-public/</url>
     </mirror> 
   </mirrors>
 
@@ -286,8 +286,6 @@ under the License.
     <activeProfile>anotherAlwaysActiveProfile</activeProfile>
   </activeProfiles>
   -->
-  <!--<activeProfiles>
-    <activeProfile>nexus</activeProfile>
-  </activeProfiles> -->
+
 </settings>
 

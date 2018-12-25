@@ -1,4 +1,4 @@
-FROM docker.oa.com:8080/library/tlinux2.2-gaia-with-onion
+FROM docker.oa.com:8080/public/centos-7.2:latest
 
 RUN yum -y update \
     && yum -y install java-1.8.0-openjdk* maven \
