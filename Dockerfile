@@ -1,4 +1,4 @@
-From docker.oa.com:8080/library/tlinux2.2-gaia-with-onion
+FROM docker.oa.com:8080/public/centos-7.2:latest
 
 COPY http-server.py /data/test/
 
